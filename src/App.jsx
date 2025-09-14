@@ -10,14 +10,19 @@ function App() {
   const [winner, setWinner] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
-
+  
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NzAsImZuYW1lIjoiTW9hdGF6IiwibG5hbWUiOiJBaG1lZCIsImVtYWlsIjoibW9hdGF6YWhtZWQ2OTZAZ21haWwuY29tIiwidXNlcm5hbWUiOiJNT0FUQVpfQUhNRUQiLCJyb2xlIjoidGVjaG5pY2FsIiwiZXZlbnRfaWQiOiI1LTE4IiwiY3JlYXRlZEF0IjoiMjAyNS0wOC0xNlQxODozNToxMS4wMDBaIiwiaWF0IjoxNzU3ODMxNTc2LCJleHAiOjE3NTc5MTc5NzZ9.nwuvJzJn5rJuTe9YbXAcn8A1daCJsVQgtG76ja2QdJg"; 
   const audioRef = useRef(null);
 
   useEffect(() => {
     const fetchNames = async () => { 
       try {
-        const res = await axios.get("https://jsonplaceholder.typicode.com/users");
-        setNames(res.data.map(user => user.name));
+        const res = await axios.get("https://api.180daraga.com/api/event/newstage18/attendance/", {
+  headers: {
+    Authorization: `Bearer ${token}`
+  }
+});
+        setNames(res.data.message.map(user => user.name));
       } catch (error) {
         console.error("Failed to fetch names:", error);
       }
