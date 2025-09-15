@@ -17,7 +17,7 @@ const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NzAsImZuYW1lIjoiTW9h
   useEffect(() => {
     const fetchNames = async () => { 
       try {
-        const res = await axios.get("https://api.180daraga.com/api/event/newstage18/attendance/", {
+        const res = await axios.get("https://api.180daraga.com/api/event/newstage18/attendance/?date=2025-9-15", {
   headers: {
     Authorization: `Bearer ${token}`
   }
