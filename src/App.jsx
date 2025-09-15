@@ -6,30 +6,40 @@ import bg from "./assets/background.png";
 import themeMusic from "./assets/music.mp3";
 
 function App() {
-  const [names, setNames] = useState([]);
+  const [names, setNames] = useState([
+  "Anas Anas",
+  "Ahmed Sayed",
+  "Menna Hashem",
+  "Gemy Abd Al Fattah",
+  "Mariam Hussein",
+  "Abdelrahman Ahmed",
+  "Mahitab M. Hammoda",
+  "Mohamed Mofeed",
+  "Yara Sayed"
+]);
   const [winner, setWinner] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [showCelebration, setShowCelebration] = useState(false);
   
-const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NzAsImZuYW1lIjoiTW9hdGF6IiwibG5hbWUiOiJBaG1lZCIsImVtYWlsIjoibW9hdGF6YWhtZWQ2OTZAZ21haWwuY29tIiwidXNlcm5hbWUiOiJNT0FUQVpfQUhNRUQiLCJyb2xlIjoidGVjaG5pY2FsIiwiZXZlbnRfaWQiOiI1LTE4IiwiY3JlYXRlZEF0IjoiMjAyNS0wOC0xNlQxODozNToxMS4wMDBaIiwiaWF0IjoxNzU3ODMxNTc2LCJleHAiOjE3NTc5MTc5NzZ9.nwuvJzJn5rJuTe9YbXAcn8A1daCJsVQgtG76ja2QdJg"; 
+const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NzAsImZuYW1lIjoiTW9hdGF6IiwibG5hbWUiOiJBaG1lZCIsImVtYWlsIjoibW9hdGF6YWhtZWQ2OTZAZ21haWwuY29tIiwidXNlcm5hbWUiOiJNT0FUQVpfQUhNRUQiLCJyb2xlIjoidGVjaG5pY2FsIiwiZXZlbnRfaWQiOiI1LTE4IiwiY3JlYXRlZEF0IjoiMjAyNS0wOC0xNlQxODozNToxMS4wMDBaIiwiaWF0IjoxNzU3OTE4Mzk4LCJleHAiOjE3NTgwMDQ3OTh9.fCe6acSOnF4kAN7lH7EpiCHkAy4NUQ97ztoQf54pQo0"; 
   const audioRef = useRef(null);
 
-  useEffect(() => {
-    const fetchNames = async () => { 
-      try {
-        const res = await axios.get("https://api.180daraga.com/api/event/newstage18/attendance/?date=2025-9-15", {
-  headers: {
-    Authorization: `Bearer ${token}`
-  }
-});
-        setNames(res.data.message.map(user => user.name));
-      } catch (error) {
-        console.error("Failed to fetch names:", error);
-      }
-    };
+//   useEffect(() => {
+//     const fetchNames = async () => { 
+//       try {
+//         const res = await axios.get("https://api.180daraga.com/api/event/newstage18/attendance/?date=2025-9-15", {
+//   headers: {
+//     Authorization: `Bearer ${token}`
+//   }
+// });
+//         setNames(res.data.message.map(user => user.name));
+//       } catch (error) {
+//         console.error("Failed to fetch names:", error);
+//       }
+//     };
 
-    fetchNames();
-  }, []);
+//     fetchNames();
+//   }, []);
 
   const startMusic = () => {
     if (audioRef.current) {
@@ -93,7 +103,7 @@ const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NzAsImZuYW1lIjoiTW9h
                 <div className="flex items-center justify-center gap-2 mb-2">
                   <span className="text-[1.1rem] text-white/80">✨Winner✨</span>
                 </div>
-                <h2 className={`text-[2rem] font-bold text-white transition-all duration-300 ${isLoading ? "blur-sm" : "blur-none"}`}>
+                <h2 className={`text-[2rem] font-bold text-white transition-all duration-300 ${isLoading ? "blur-lg" : "blur-none"}`}>
                   {winner}
                 </h2>
               </div>
